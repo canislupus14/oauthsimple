@@ -289,7 +289,7 @@ class OAuthSimple {
         return Array (
             'parameters' => $this->_parameters,
             'signature' => self::_oauthEscape($this->_parameters['oauth_signature']),
-            'signed_url' => $this->_path . '?' . $normParams,
+            'signed_url' => $this->_path . '?' . $this->_normalizedParameters(),
             'header' => $this->getHeaderString(),
             'sbs'=> $this->sbs
             );
@@ -477,7 +477,7 @@ class OAuthSimple {
     }
 
 
-    private function _generateSignature ($parameters="") 
+    private function _generateSignature () 
     {
         $secretKey = '';
 		if(isset($this->_secrets['shared_secret']))
@@ -498,7 +498,7 @@ class OAuthSimple {
             case 'PLAINTEXT':
                 return urlencode($secretKey);;
             case 'HMAC-SHA1':
-                $this->sbs = self::_oauthEscape($this->_action).'&'.self::_oauthEscape($this->_path).'&'.$parameters;
+                $this->sbs = self::_oauthEscape($this->_action).'&'.self::_oauthEscape($this->_path).'&'.self::_oauthEscape($this->_normalizedParameters());
 
                 return base64_encode(hash_hmac('sha1',$this->sbs,$secretKey,TRUE));
             default:
