@@ -1,5 +1,3 @@
-This fork exists to revert a change that was made which makes the library incompatible with Discogs API. See: https://github.com/jrconlin/oauthsimple/issues/22
-PHP is working with Discogs API now.  I will try to update the other libs as soon as possible.
 
 =head1 NAME
 
@@ -7,6 +5,11 @@ OAuthSimple - a very simple OAuth 1.0 signed request generator
 
 =head1 SYNOPSIS
 
+This fork exists to revert a change that was made which makes the library incompatible with Discogs API.  
+See: https://github.com/jrconlin/oauthsimple/issues/22
+PHP is working with Discogs API now.  
+I will try to update the other libs as soon as possible.  
+  
 See source comments for usage examples
    
 =head1 DESCRIPTION
